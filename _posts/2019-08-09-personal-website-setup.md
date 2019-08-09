@@ -49,15 +49,15 @@ you need to create a `CNAME` record that points to you
 `<your-github-username>.github.io`. Go to the website where you bought you domain and add
 a settings along those lines:
 
-|  Type   |  Host  |            Value                 |  TTL  |
-|:-------:|:------:|:--------------------------------:|:-----:|
-|  CNAME  |  www   | <your-github-username>.github.io | X min |
+|  Type   |  Host  |              Value                 |  TTL  |
+|:-------:|:------:|:----------------------------------:|:-----:|
+| `CNAME` |  `www` | `<your-github-username>.github.io` | X min |
 
 In my case I have a subdomain, so I've set it to `alexey` instead of `www`:
 
-|  Type   |  Host  |      Value       |  TTL  |
-|:-------:|:------:|:----------------:|:-----:|
-|  CNAME  | alexey | lehins.github.io | 5 min |
+|  Type   |   Host   |        Value       |  TTL  |
+|:-------:|:--------:|:------------------:|:-----:|
+| `CNAME` | `alexey` | `lehins.github.io` | 5 min |
 
 
 Now got the setting of your site's repository on GitHub and go to "GitHub Pages"
