@@ -40,8 +40,12 @@ author:
       url: https://stackoverflow.com/users/1848029/lehins
 home:
   section1: <h1>Alexey Kuleshevich</h1>
-  section2: <h2>A gem-based responsive simple texture styled Jekyll theme</h2>
-  section3: <div class="social-links"><a class="ico-github btn" href="https://github.com/yizeng/jekyll-theme-simple-texture" title="View on GitHub"></a></div>
+  section2: <h2>My personal website</h2>
+  section3: >
+    <div class="social-links">
+      <a class="ico-github btn" href="https://github.com/lehins" title="GitHub Account"></a>
+      <a class="ico-linkedin btn" href=https://www.linkedin.com/in/lehins/ title="LinkedIn Profile"></a>
+    </div>
 blog:
   cc_license: http://creativecommons.org/licenses/by-sa/4.0/ # A link to CC License of your choice.
   cc_license_image: /assets/images/theme/cc-by-sa.png # An image of your CC License. 
