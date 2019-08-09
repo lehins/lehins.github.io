@@ -48,7 +48,7 @@ a settings along those lines:
 |: Type  :|: Host :|:           Value                :|: TTL :|
 |  CNAME  |  www   | <your-github-username>.github.io | X min |
 
-For me it was a subdomain, so I set it `alexey` instead of `www`:
+For me it was a subdomain, so I've set it to `alexey` instead of `www`:
 
 |: Type  :|: Host :|:     Value      :|: TTL :|
 |  CNAME  | alexey | lehins.github.io | 5 min |
@@ -98,12 +98,12 @@ $ git clone git@github.com:$USERNAME/$USERNAME.github.io.git
 $ cd $USERNAME
 ```
 
-Git will likely ask you for your GitHub username and passowrd. I would recommend
+Git will likely ask you for your GitHub username and password. I would recommend
 [setting up an ssh key](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 for working with your github repositories, but that is a totally separate subject and I'll let
 you figure it out on your own.
 
-The important part is that now ou can edit files present in the repository using your
+The important part is that now you can edit files present in the repository using your
 favorite text editor, in my case it is [`emacs`](https://www.gnu.org), but use whatever
 makes you happy. First place to start I'd say is a `_config.yml` file in the repo. Change
 the info you see fit, `commit` the change to the repo and `push` it to the remote repository:
@@ -124,7 +124,7 @@ As I've been setting my website up I was keeping this document up to date. Now i
 like it is time to add it to the repository and publish my first draft:
 
 ```shell
-$ cp ~/personal-website-setup.md ~/github/lehins.github.io/_posts/2019-08-09-personal-website-setup.md`
+$ mv ~/personal-website-setup.md _posts/2019-08-09-personal-website-setup.md`
 $ git add -A
 $ git commit -am "Attempt to publish a draft of my first website"
 $ git push
@@ -135,4 +135,54 @@ commits.
 
 ## Local development
 
-TODO: describe how to check local changes locally before pushing them to remote.
+Going throught the whole process of committig to the repository and pushing to the remote
+server just to see any slight change you make can be a bit inconvenient. We can handle this
+problem by installing local development environment and then we can check changes locally
+before pushing them to the remote. All we need is just a few tools installed locally:
+
+```shell
+$ sudo apt-get install -y ruby ruby-dev
+```
+
+You can follow other tutorials and install you `bundler` and `jekyll` as sudo, but I would
+advise against it and go through a few extra steps:
+
+```shell
+$ mkdir ~/.ruby
+$ echo 'export GEM_HOME=~/.ruby/' >> ~/.bashrc
+$ echo 'export PATH="$PATH:~/.ruby/bin"' >> ~/.bashrc
+```
+
+Logout then log back in again. Or for current shell session youc an just do `$ source
+~/.bashrc`. After which you can installed gems without root permissions:
+
+
+```shell
+$ gem install bundler jekyll
+```
+
+Next you need to install all dependencies that your template and Jekyll site need:
+
+```shell
+$ bundle install
+```
+
+After which all you that separates you from seeing your website locally in your browser is
+the comands that starts up a ruby development webserver:
+
+```shell
+$ bundle exec jekyll serve
+Configuration file: /home/lehins/github/lehins.github.io/_config.yml
+            Source: /home/lehins/github/lehins.github.io
+       Destination: /home/lehins/github/lehins.github.io/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating...
+                    done in 0.676 seconds.
+ Auto-regeneration: enabled for '/home/lehins/github/lehins.github.io'
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+```
+
+Go on and open you favorite browser and type in
+[`http://127.0.0.1:4000`](http://127.0.0.1:4000) and you ought to see your website, that
+is running locally. As instructed above, just hot `Ctrl-C` to stop. Cool thing about it is that whenever you change any files in the project, Jekyll will sense it and will generate new contents as soon as you save the file.
