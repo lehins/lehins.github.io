@@ -200,5 +200,5 @@ will sense it and will generate new contents as soon as you save the file.
 
 # Conclusion
 
-Not much to say here, hopefuly these instructions turned out to ne useful for you. Wish
+Not much to say here, hopefuly these instructions turned out to be useful for you. Wish
 you luck with sharing your knowledge with the world.
