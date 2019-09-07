@@ -44,18 +44,19 @@ home:
   section3: >
     <div class="social-links">
       <a class="ico-github btn" href="https://github.com/lehins" title="GitHub Account"></a>
-      <a class="ico-linkedin btn" href=https://www.linkedin.com/in/lehins/ title="LinkedIn Profile"></a>
+      <a class="ico-linkedin btn" href="https://www.linkedin.com/in/lehins/" title="LinkedIn Profile"></a>
+      <a class="ico-keybase btn" href="https://keybase.io/lehins/" title="Keybase"></a>
     </div>
 blog:
   cc_license: http://creativecommons.org/licenses/by-sa/4.0/ # A link to CC License of your choice.
-  cc_license_image: /assets/images/theme/cc-by-sa.png # An image of your CC License. 
-  footer_content: A gem-based responsive simple texture styled <a href="http://jekyllrb.com/">Jekyll</a> theme.
+  cc_license_image: /assets/images/theme/cc-by-sa.png # An image of your CC License.
+  footer_content: “No matter how brilliant you are, if you sit in a sealed room and have fantastic ideas but don't tell anybody, then all you've done is heat up the universe.” - Simon Peyton Jones
 
 disqus:
-  shortname: # e.g. yizeng
-  public_key: # e.g. ULZ0b9TFefCUJHKQd4JCKv2v3u27YoG7YG8zXPewkWrT333Z0Se9YnxLzoV6VM8W
-google_tag_manager: # e.g. 'GTM-KCQJXZ8F'
-addthis_public_id: # AddThis sharing plugin. See http://www.addthis.com/. E.g. ra-53329e27694534j5 
+  shortname: alexey-kuleshevich
+  public_key: qZg8q1coWwUrEXRScvdQsYWeIrLIevhIvEsopSw6D37NA3QNeOHDRUZoUwqv4dlq
+google_tag_manager: GTM-KKNBL73
+addthis_public_id: # AddThis sharing plugin. See http://www.addthis.com/. E.g. ra-53329e27694534j5
 
 paths:
   home: /

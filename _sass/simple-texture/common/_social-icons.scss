@@ -79,4 +79,10 @@ $size: 48;
 
         background-color: #6383A8;
     }
+
+    .ico-keybase {
+        @include get-ico-image(keybase);
+
+    }
+
 }
