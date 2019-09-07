@@ -56,7 +56,7 @@ disqus:
   shortname: alexey-kuleshevich
   public_key: qZg8q1coWwUrEXRScvdQsYWeIrLIevhIvEsopSw6D37NA3QNeOHDRUZoUwqv4dlq
 google_tag_manager: GTM-KKNBL73
-addthis_public_id: # AddThis sharing plugin. See http://www.addthis.com/. E.g. ra-53329e27694534j5
+addthis_public_id: ra-5d73b3e76cb474a5
 
 paths:
   home: /
