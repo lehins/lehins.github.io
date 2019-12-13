@@ -57,6 +57,7 @@ disqus:
   public_key: qZg8q1coWwUrEXRScvdQsYWeIrLIevhIvEsopSw6D37NA3QNeOHDRUZoUwqv4dlq
 google_tag_manager: GTM-KKNBL73
 addthis_public_id: ra-5d73b3e76cb474a5
+analytics: UA-154585805-1
 
 paths:
   home: /

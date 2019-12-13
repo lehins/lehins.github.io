@@ -5,16 +5,19 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="{{ site.lang }}">
-<!--<![endif]-->
+  <!--<![endif]-->
 
-<head>
+  <head>
     {% include common/meta.html %}
     <link href='{{ site.baseurl }}/assets/stylesheets/home.css' rel="stylesheet" type="text/css">
     {% include common/libraries.html %}
     {% if site.google_tag_manager %}
-        {% include common/gtm-head.html %}
+      {% include common/gtm-head.html %}
     {% endif %}
-</head>
+    {% if site.analytics %}
+      {% include common/analytics.html %}
+    {% endif %}
+  </head>
 
 <body>
     {% if site.google_tag_manager %}

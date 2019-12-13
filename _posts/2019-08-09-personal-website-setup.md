@@ -1,3 +1,10 @@
+---
+layout: page
+title: Personal Website Setup
+categories: [blog, dev]
+tags: [jekyll, web]
+---
+
 # How this website was setup
 
 I think it is an appropriate topic for the very first blog post on my personal website. It
