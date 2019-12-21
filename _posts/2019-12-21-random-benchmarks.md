@@ -17,8 +17,8 @@ on how to use those libraries and what are their conceptual differences.
 When people talk about random values they immediately think of two possible categories:
 
 1. Cryptographically secure pseudo random number generators, which are provided by such
-   libraries as [`cryptonite`](https://www.stackage.org/package/cryptonite) or
-   [`crypto-api`](https://www.stackage.org/package/crypto-api) and are used for things
+   libraries as [`cryptonite`](https://www.stackage.org/package/cryptonite){:target="_blank"} or
+   [`crypto-api`](https://www.stackage.org/package/crypto-api){:target="_blank"} and are used for things
    like encryption. __These are NOT the kind of libraries I will be talking about in this
    post__. They do deserve their own separate article and maybe some other Haskeller with
    an interest in that domain can whip one up.
@@ -31,12 +31,12 @@ The latter category employs various algorithms to achieve different degree of
 randomness. Some produce better values than the others, which might make them differ in
 unpredictability, longer or shorter periods, or even suitability for certain data types but
 not the others. They might pass or fail [diehard
-tests](https://en.wikipedia.org/wiki/Diehard_tests) and have all sorts of other properties
+tests](https://en.wikipedia.org/wiki/Diehard_tests){:target="_blank"} and have all sorts of other properties
 that such algorithms are expected to possess. You can study each individual one at your
 leisure, this is not gonna be the point of this post. It is important, though, that you
 do understand the quality of the algorithm being used before jumping into conclusions
 about the performance of its implementation. Just to give an example a
-[Xorshift](https://en.wikipedia.org/wiki/Xorshift) algorithm is known to be fast, but
+[Xorshift](https://en.wikipedia.org/wiki/Xorshift){:target="_blank"} algorithm is known to be fast, but
 unreliable, when compared to others.
 
 One other crucial point I would like to make is that I will omit any subjective
@@ -65,7 +65,7 @@ and "stateless". Of course you can thread a generator in a `StateT` like monad o
 in `IORef`, but that is not a requirement.
 
 The most popular package that is equipped with such functionality in Haskell is
-[`random`](https://hackage.haskell.org/package/random). I think it is still popular only
+[`random`](https://hackage.haskell.org/package/random){:target="_blank"}. I think it is still popular only
 because it was the first of its kind in Haskell and is the defacto library when people are
 learning about pure random number generation. Keep reading further though to realize, if
 you haven't yet, that there are much better packages available. Nevertheless let's look at
@@ -157,12 +157,12 @@ mathematically complex. This fact allowed them to not rely on mutation to perfor
 efficiently, which in turn made them pure. RNGs in this section have to carry a large
 mutable array in their state around, a portion of which is mutated each time a new random
 value is generated. One such popular package is
-[`mwc-random`](https://www.stackage.org/package/mwc-random). Because there is mutation
+[`mwc-random`](https://www.stackage.org/package/mwc-random){:target="_blank"}. Because there is mutation
 happens behind the scenes, we have to live inside of
-[`IO`](https://downloads.haskell.org/~ghc/8.8.1/docs/html/libraries/base-4.13.0.0/System-IO.html#t:IO),
-[`ST`](https://downloads.haskell.org/~ghc/8.8.1/docs/html/libraries/base-4.13.0.0/Control-Monad-ST.html#t:ST)
+[`IO`](https://downloads.haskell.org/~ghc/8.8.1/docs/html/libraries/base-4.13.0.0/System-IO.html#t:IO){:target="_blank"},
+[`ST`](https://downloads.haskell.org/~ghc/8.8.1/docs/html/libraries/base-4.13.0.0/Control-Monad-ST.html#t:ST){:target="_blank"}
 or some transformer on top of one of those two that implements a
-[`PrimMonad`](https://www.stackage.org/haddock/lts-14.17/primitive-0.6.4.0/Control-Monad-Primitive.html#t:PrimMonad)
+[`PrimMonad`](https://www.stackage.org/haddock/lts-14.17/primitive-0.6.4.0/Control-Monad-Primitive.html#t:PrimMonad){:target="_blank"}
 instance. Here is how it works in ghci (which is inherently `IO`):
 
 
@@ -225,22 +225,22 @@ The last category is the most diverse one, it is all the libraries out there tha
 uniform random number generators to produce some other random data:
 
 * Wrappers (or built-in) that have functionality for producing a whole variety of
-  distributions: [`random-fu`](https://hackage.haskell.org/package/random-fu),
-  [`mwc-random`](https://hackage.haskell.org/package/mwc-random),
-  [`statistics`](https://hackage.haskell.org/package/statistics_), etc.
+  distributions: [`random-fu`](https://hackage.haskell.org/package/random-fu){:target="_blank"},
+  [`mwc-random`](https://hackage.haskell.org/package/mwc-random){:target="_blank"},
+  [`statistics`](https://hackage.haskell.org/package/statistics_){:target="_blank"}, etc.
 * Wrappers around RNGs that provide different interface, for example monadic:
-  [`MonadRandom`](https://hackage.haskell.org/package/MonadRandom),
-  [`random-source`](https://www.stackage.org/package/random-source),
+  [`MonadRandom`](https://hackage.haskell.org/package/MonadRandom){:target="_blank"},
+  [`random-source`](https://www.stackage.org/package/random-source){:target="_blank"},
 * Libraries that shuffle elements of data structures by using RNGs:
-  [`random-shuffle`](https://www.stackage.org/package/random-shuffle)
+  [`random-shuffle`](https://www.stackage.org/package/random-shuffle){:target="_blank"}
 * Libraries that do randomized property testing:
-  [`QuickCheck`](https://hackage.haskell.org/package/QuickCheck),
-  [`hendgehog`](https://hackage.haskell.org/package/hedgehog),
-  [`genvalidity`](https://hackage.haskell.org/package/genvalidity), etc.
+  [`QuickCheck`](https://hackage.haskell.org/package/QuickCheck){:target="_blank"},
+  [`hendgehog`](https://hackage.haskell.org/package/hedgehog){:target="_blank"},
+  [`genvalidity`](https://hackage.haskell.org/package/genvalidity){:target="_blank"}, etc.
 * Libraries that generate realistic looking random data:
-  [`fakedata`](https://hackage.haskell.org/package/fakedata),
-  [`fake`](https://hackage.haskell.org/package/fake),
-  [`lipsum-gen`](https://hackage.haskell.org/package/lipsum-gen), etc.
+  [`fakedata`](https://hackage.haskell.org/package/fakedata){:target="_blank"},
+  [`fake`](https://hackage.haskell.org/package/fake){:target="_blank"},
+  [`lipsum-gen`](https://hackage.haskell.org/package/lipsum-gen){:target="_blank"}, etc.
 * Whatever else you can think of that uses random numbers
 
 Point is, once we have a uniform random number generator, we can simulate all other random
@@ -259,9 +259,9 @@ since the bindings I've tried were pretty slow.
 
 Earlier this year I stumbled upon Ben Gamari's question on StackOverflow about trying to
 generate an array with random numbers in parallel, which I was [really happy to
-answer](https://stackoverflow.com/questions/11230895/parallel-mapm-on-repa-arrays/56449011#56449011),
+answer](https://stackoverflow.com/questions/11230895/parallel-mapm-on-repa-arrays/56449011#56449011){:target="_blank"},
 since I had the exact solution for it in
-[`massiv`](https://github.com/lehins/massiv). Naturally, I wanted to benchmark my
+[`massiv`](https://github.com/lehins/massiv){:target="_blank"}. Naturally, I wanted to benchmark my
 solution. Once I wrote the benchmarks, my curiosity took me deeper into the realm of
 randomness. So in a way, that question is the cause for this blog post. Thanks, Ben! ;)
 
@@ -273,9 +273,9 @@ and discard them right away. Alternatively, I could have generated lists of rand
 numbers, like in one of the examples earlier. Instead, I went for unboxed arrays for a few
 important reasons. First of all, I already had an efficient solution for generating arrays
 using RNGs sequentially and in parallel with
-[`randomArray`](https://www.stackage.org/haddock/lts-14.17/massiv-0.4.4.0/Data-Massiv-Array.html#v:randomArray)
+[`randomArray`](https://www.stackage.org/haddock/lts-14.17/massiv-0.4.4.0/Data-Massiv-Array.html#v:randomArray){:target="_blank"}
 and
-[`randomArrayWS`](https://www.stackage.org/haddock/lts-14.17/massiv-0.4.4.0/Data-Massiv-Array.html#v:randomArrayWS)
+[`randomArrayWS`](https://www.stackage.org/haddock/lts-14.17/massiv-0.4.4.0/Data-Massiv-Array.html#v:randomArrayWS){:target="_blank"}
 functions using pure and stateful generators respectfully. Secondly, a flat unboxed array
 is the most efficient way to store large number of values, be they random or not. Most
 importantly though, as long as we are using the same approach for benchmarking all of the
@@ -296,19 +296,19 @@ uploaded on hackage).
 
 |:-------:|:-----------------:|:----------------:|:--------------:|
 | Package | First appeared on | Last released on | Latest release |
-| [`random`](https://hackage.haskell.org/package/random) | 2007-11-03 | 2014-09-16 | `random == 1.1` |
-| [`mersenne-random-pure64`](https://hackage.haskell.org/package/mersenne-random-pure64) | 2008-01-28 | 2016-08-29 | `mersenne-random-pure64 == 0.2.2.0` |
-| [`xorshift`](https://hackage.haskell.org/package/xorshift) | 2011-01-05 | 2011-04-11 | `xorshift == 2` |
-| [`AC-Random`](https://hackage.haskell.org/package/AC-Random) | 2011-08-25 | 2011-08-25 | `AC-Random == 0.1` |
-| [`Random123`](https://hackage.haskell.org/package/Random123) | 2013-05-04 | 2015-03-20 | `Random123 == 0.2.0` |
-| [`tf-random`](https://hackage.haskell.org/package/tf-random) | 2013-09-18 | 2014-04-09 | `tf-random == 0.5` |
-| [`pcg-random`](https://hackage.haskell.org/package/pcg-random) | 2014-12-15 | 2019-05-18 | `pcg-random == 0.1.3.6` |
-| [`Xorshift128Plus`](https://hackage.haskell.org/package/Xorshift128Plus) | 2015-04-14 | 2015-04-14 | `Xorshift128Plus == 0.1.0.1` |
-| [`pcgen`](https://hackage.haskell.org/package/pcgen) | 2017-04-29 | 2017-07-05 | `pcgen == 2.0.1` |
-| [`splitmix`](https://hackage.haskell.org/package/splitmix) | 2017-06-30 | 2019-07-30 | `splitmix == 0.0.3` |
+| [`random`](https://hackage.haskell.org/package/random){:target="_blank"} | 2007-11-03 | 2014-09-16 | `random == 1.1` |
+| [`mersenne-random-pure64`](https://hackage.haskell.org/package/mersenne-random-pure64){:target="_blank"} | 2008-01-28 | 2016-08-29 | `mersenne-random-pure64 == 0.2.2.0` |
+| [`xorshift`](https://hackage.haskell.org/package/xorshift){:target="_blank"} | 2011-01-05 | 2011-04-11 | `xorshift == 2` |
+| [`AC-Random`](https://hackage.haskell.org/package/AC-Random){:target="_blank"} | 2011-08-25 | 2011-08-25 | `AC-Random == 0.1` |
+| [`Random123`](https://hackage.haskell.org/package/Random123){:target="_blank"} | 2013-05-04 | 2015-03-20 | `Random123 == 0.2.0` |
+| [`tf-random`](https://hackage.haskell.org/package/tf-random){:target="_blank"} | 2013-09-18 | 2014-04-09 | `tf-random == 0.5` |
+| [`pcg-random`](https://hackage.haskell.org/package/pcg-random){:target="_blank"} | 2014-12-15 | 2019-05-18 | `pcg-random == 0.1.3.6` |
+| [`Xorshift128Plus`](https://hackage.haskell.org/package/Xorshift128Plus){:target="_blank"} | 2015-04-14 | 2015-04-14 | `Xorshift128Plus == 0.1.0.1` |
+| [`pcgen`](https://hackage.haskell.org/package/pcgen){:target="_blank"} | 2017-04-29 | 2017-07-05 | `pcgen == 2.0.1` |
+| [`splitmix`](https://hackage.haskell.org/package/splitmix){:target="_blank"} | 2017-06-30 | 2019-07-30 | `splitmix == 0.0.3` |
 
 Every single one of the above libraries provides an instance for
-[`RandomGen`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#t:RandomGen)
+[`RandomGen`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#t:RandomGen){:target="_blank"}
 class, so we are going to try and use it. `AC-Random` and `Xorshift128Plus` did not have such
 an instance implemented, but they had the right helper functions to make it possible for
 me to provide one.
@@ -374,11 +374,11 @@ have to do is call the generator twice. So, let's actually be fair and benchmark
 generation of the full 64 bits.
 
 Good thing for us is that `random` package is versatile enough and provides us with a
-[`Random`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#t:Random)
+[`Random`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#t:Random){:target="_blank"}
 type class, which is designed to use any of the above generators in order to produce a
 uniformly distributed value in the full range of a type that has such instance
 implemented. This means that all we need to do is call [`random :: RandomGen g => g -> (a,
-g)`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:random)
+g)`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:random){:target="_blank"}
 function and we will get a uniformly distributed value in a predefined range, which for
 bounded types like `Word64` it will be the full range.
 
@@ -396,9 +396,9 @@ started to perform x10 - x50 times slower. As I mentioned just a couple of parag
 it would have been expected for some generators to get a factor of x2 slow down, since
 they can't generate 64bits in one go. Therefore the results that we got can't possibly be
 explained by this, so what is really causing such a huge regression? As it turns out,
-[`randomR`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:randomR)
+[`randomR`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:randomR){:target="_blank"}
 and consequently
-[`random`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:random)
+[`random`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:random){:target="_blank"}
 are oblivious to the concrete type that they are generating and all of the integral
 numbers go through the arbitrary precision `Integer` in order to produce the value in a
 desired range. Simply put, whatever number of bits you want to generate, be it 8 or 64 it
@@ -463,7 +463,7 @@ $ stack bench --ba '--output fast.html --match pattern Pure/fast/Word64 --templa
 
 
 From a quick look at all the benchmarks above, the clear winner is
-[`splitmix`](https://www.stackage.org/package/splitmix). Now let's move towards stateful
+[`splitmix`](https://www.stackage.org/package/splitmix){:target="_blank"}. Now let's move towards stateful
 RNGs and see how they compare with pure generators.
 
 
@@ -475,10 +475,10 @@ benchmarked are included as well:
 
 |:-------:|:-----------------:|:----------------:|:--------------:|
 | Package | First appeared on | Last released on | Latest release |
-| [`mwc-random`](http://hackage.haskell.org/package/mwc-random) | 2009-12-26 | 2018-07-11 | `mws-random == 0.14.0.0` |
-| [`sfmt`](https://hackage.haskell.org/package/sfmt) | 2014-12-09 | 2015-04-15 | `sfmt == 0.1.1` |
-| [`pcg-random`](https://hackage.haskell.org/package/pcg-random) | 2014-12-15 | 2019-05-18 | `pcg-random == 0.1.3.6` |
-| [`mersenne-random`](https://hackage.haskell.org/package/mersenne-random) | 2008-01-22 | 2011-06-18 | `mersenne-random == 1.0.0.1` |
+| [`mwc-random`](http://hackage.haskell.org/package/mwc-random){:target="_blank"} | 2009-12-26 | 2018-07-11 | `mws-random == 0.14.0.0` |
+| [`sfmt`](https://hackage.haskell.org/package/sfmt){:target="_blank"} | 2014-12-09 | 2015-04-15 | `sfmt == 0.1.1` |
+| [`pcg-random`](https://hackage.haskell.org/package/pcg-random){:target="_blank"} | 2014-12-15 | 2019-05-18 | `pcg-random == 0.1.3.6` |
+| [`mersenne-random`](https://hackage.haskell.org/package/mersenne-random){:target="_blank"} | 2008-01-22 | 2011-06-18 | `mersenne-random == 1.0.0.1` |
 
 In a very similar fashion as before I ran sequential and parallel generations of random
 arrays, except now with stateful generators.
@@ -510,7 +510,7 @@ $ stack bench --ba '--output finalists.html --match pattern Finalists/Word64 --t
 
 An extra bonus benchmarks for the libraries that could efficiently generate `Double`.
 I’ve tried
-[`System.Random.random`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:random)
+[`System.Random.random`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#v:random){:target="_blank"}
 function first and as I suspected it performs just as awfully for `Double`s as for
 integral types, therefore amongst pure generators I kept only the ones that provided
 functions for `Double` out of the box.
@@ -534,7 +534,7 @@ out there. Hope you find them useful.
 In the process of researching and experimenting I made a few realizations for myself, thus
 would like to share those with you as well, despite that they might be a bit subjective:
 
-* [`splitmix`](https://hackage.haskell.org/package/splitmix) pleasantly surprised me with
+* [`splitmix`](https://hackage.haskell.org/package/splitmix){:target="_blank"} pleasantly surprised me with
   its performance. Great job, Oleg!  Parallelization of the algorithm isn't that great,
   only a factor of x2 on a quad core CPU, but I suspect it might be because it is getting
   bounded by the speed of my memory, rather than the algorithm or the implementation. This
@@ -542,25 +542,25 @@ would like to share those with you as well, despite that they might be a bit sub
   noted in the haddock, a possibility of future addition of SIMD to GHC (and `splitmix`)
   could give it a slight boost.
 
-* [`sfmt`](https://hackage.haskell.org/package/sfmt) turned out to be a gem I never knew
+* [`sfmt`](https://hackage.haskell.org/package/sfmt){:target="_blank"} turned out to be a gem I never knew
   about. Underneath it relies on implementation in `C` and SIMD instructions, so it might
   not be extremely portable, but that doesn't mean it can't be useful for a whole variety
   of projects, especially since it turned out to be the fastest stateful generator.
 
-* [`mwc-random`](https://hackage.haskell.org/package/mwc-random) has been around the block
+* [`mwc-random`](https://hackage.haskell.org/package/mwc-random){:target="_blank"} has been around the block
   and is quite a popular library. It didn't turn out to be the fastest, but it still
   performs quite well and running in parallel improves the runtime significantly. Moreover,
   the interface is solid and provides ability to generate other distributions out of the
   box.
 
-* [`random`](https://hackage.haskell.org/package/random) is the package I was quite
+* [`random`](https://hackage.haskell.org/package/random){:target="_blank"} is the package I was quite
   disappointed in. I was more than sure that `StdGen` will have poor performance, but I
   did not expect
-  [`Random`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#t:Random)
+  [`Random`](https://hackage.haskell.org/package/random-1.1/docs/System-Random.html#t:Random){:target="_blank"}
   class instances to be so slow. I know that there [was some effort in
-  improving](https://www.google-melange.com/archive/gsoc/2015/orgs/haskell/projects/nkartashov.html)
+  improving](https://www.google-melange.com/archive/gsoc/2015/orgs/haskell/projects/nkartashov.html){:target="_blank"}
   it, but as it turns out [that
-  effort](https://gist.github.com/nkartashov/e46fd146b1df2d79aaf3) was not only
+  effort](https://gist.github.com/nkartashov/e46fd146b1df2d79aaf3){:target="_blank"} was not only
   unfruitful, but it was also directed at the wrong problem. From the looks of it the true
   problem is not in the generator that is being used in the library, but in the way that all
   generators are being used. Of course, it doesn't mean the `StdGen` is not a problem, it's
@@ -581,4 +581,4 @@ If it were up to me, here are the improvements I would make:
 Thank you. If you'd like to inspect the code and convince yourself of legitimacy of the
 discussed benchmarks by running them yourself or scrutinizing them some other way, they
 can be found in my
-[haskell-benchmarks](https://github.com/lehins/haskell-benchmarks/random-benchamrks) repo.
+[haskell-benchmarks](https://github.com/lehins/haskell-benchmarks/tree/master/random-benchmarks){:target="_blank"} repo.
