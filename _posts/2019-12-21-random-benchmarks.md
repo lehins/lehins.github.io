@@ -227,7 +227,7 @@ uniform random number generators to produce some other random data:
 * Wrappers (or built-in) that have functionality for producing a whole variety of
   distributions: [`random-fu`](https://hackage.haskell.org/package/random-fu){:target="_blank"},
   [`mwc-random`](https://hackage.haskell.org/package/mwc-random){:target="_blank"},
-  [`statistics`](https://hackage.haskell.org/package/statistics_){:target="_blank"}, etc.
+  [`statistics`](https://hackage.haskell.org/package/statistics){:target="_blank"}, etc.
 * Wrappers around RNGs that provide different interface, for example monadic:
   [`MonadRandom`](https://hackage.haskell.org/package/MonadRandom){:target="_blank"},
   [`random-source`](https://www.stackage.org/package/random-source){:target="_blank"},
