@@ -17,9 +17,10 @@
     {% if site.analytics %}
       {% include common/analytics.html %}
     {% endif %}
+    <link rel="shortcut icon" href="{{ site.baseurl }}/assets/images/favicon.ico">
   </head>
 
-<body>
+  <body>
     {% if site.google_tag_manager %}
         {% include common/gtm-body.html %}
     {% endif %}

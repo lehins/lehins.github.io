@@ -17,29 +17,30 @@
     {% if site.analytics %}
       {% include common/analytics.html %}
     {% endif %}
+    <link rel="shortcut icon" href="{{ site.baseurl }}/assets/images/favicon.ico">
   </head>
 
-<body>
+  <body>
     {% if site.google_tag_manager %}
-        {% include common/gtm-body.html %}
+      {% include common/gtm-body.html %}
     {% endif %}
 
     {% include common/notices.html %}
     {% include blog/overlay.html %}
 
     <div id="page" class="hentry">
-        {% include blog/header.html %}
+      {% include blog/header.html %}
 
-        <div class="body animated fadeInDown" role="main">
-            <div class="unit-body">
-                <div class="unit-inner unit-body-inner">
-                    <div class="entry-content">
-                        {{ content }}
-                    </div>
-                </div>
+      <div class="body animated fadeInDown" role="main">
+        <div class="unit-body">
+          <div class="unit-inner unit-body-inner">
+            <div class="entry-content">
+              {{ content }}
             </div>
+          </div>
         </div>
-        {% include blog/footer.html %}
+      </div>
+      {% include blog/footer.html %}
     </div>
 
     {% include blog/scripts.html %}
