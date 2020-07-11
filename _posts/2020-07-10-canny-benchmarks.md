@@ -10,8 +10,8 @@ tags: [haskell, rng, benchmarks]
 ## Intro
 
 How many implementations of Canny edge detection do we have in Haskell? How fast are they
-and which array libraries are responsible for the performance of those implementations? These
-are the questions I'll try to answer in this blog post.
+and which array libraries are responsible for their performance? These are the questions
+I'll try to answer in this blog post.
 
 ## Preface
 
@@ -53,13 +53,13 @@ scope of this post. Below is the list of implementations that I found:
 * [`friday`](https://github.com/RaphaelJ/friday/blob/194d99a5f660cf1e0ea3fd39a066cf157c6efaf5/src/Vision/Detector/Edge.hs) - thanks to Raphael Javaux
 
 
-These are two other Canny edge detection implementation in other languages that are
+There are two other Canny edge detection implementations in other languages that are
 available in Haskell by the means of FFI:
 [`opencv`](https://hackage.haskell.org/package/opencv-0.0.2.1/docs/OpenCV-ImgProc-FeatureDetection.html#v:canny)
 and
 [`arrayfire`](https://hackage.haskell.org/package/arrayfire-0.6.0.0/docs/ArrayFire-Image.html#v:canny). I'd
 really like to have benchmark comparison for them as well, but for now my focus was on
-Haskell.
+pure Haskell.
 
 ## Array Libraries
 
@@ -81,10 +81,11 @@ Few personal notes on the libraries in question:
   LLVM, which is not always trivial to setup. Another personal dislike I have is that it
   requires you to use a special DSL for the code you write, but it is a small price to pay
   for ability to run Haskell on a GPU.
-* [`repa`](https://hackage.haskell.org/package/repa) seems to be in an very inactive mode
+* [`repa`](https://hackage.haskell.org/package/repa) seems to be in a very inactive mode
   with a few maintainers occasionally accepting patches and updating bounds of
-  dependencies, but no new features are being developed and the initiative on the rewrite of
-  repa-4 a few years ago has stalled and is now abandoned.
+  dependencies, but no new features are being developed. The initiative on the rewrite of
+  next version of repa-4 a few years ago has stalled and is now bitrotting in the
+  graveyard of unfinished projects.
 * [`yarr`](https://hackage.haskell.org/package/yarr) has been abandoned for a few years
   now and there is currently no version available that compiles with any GHC newer than
   8.2. This fact posed a problem for me, because my own implementation works only on ghc
@@ -162,7 +163,7 @@ stack bench :bench-canny --ba '--output canny-medium.html --match prefix Medium 
 performs like TGIF. Even if it did use all the available cores it wouldn't get anywhere
 close to being competitive, just because it is lagging too far behind.
 
-`yarr` claims being faster than `repa`, but it does not live up to its promises. Moreover,
+`yarr` claims being faster than `repa`, but it does not live up to its promise. Moreover,
 considering that this package relies heavily on `fixed-vector`, which has experienced a
 drastic change to its interface in the last two years, it would take good amount of work
 in order to make `yarr` compatible with the newest version. It looks like yet another
@@ -187,14 +188,14 @@ am not going to expand on any of that.
 `massiv` outperforms them all, at least in these benchmarks. I am usually not the kind of
 person to be bragging about the stuff that I've done, but the results I've seen here speak
 for themselves and I believe that `massiv` does deserve to be bragged about at least a
-little. It's major strong points are:
+little. Its major strong points are:
 
 * Pure Haskell implementation that relies only on GHC. Whenever LLVM backend is used GHC
   might produce even slightly faster code, but that is not a requirement.
 * Automatic parallelization on all cores by the means of a specialized work stealing
   scheduler.
-* When used correctly it will result in extremely efficient code. Its interface also makes
-  it harder for it to be used incorrectly through the power of Haskell's type system.
+* When used correctly it will result in extremely efficient code. The API makes it harder
+  for it to be used incorrectly through the power of Haskell's type system.
 * Sophisticated and parallelizable stencil computation that works equally well for all
   dimensions, unlike `repa` or `accelerate` with two and three dimensions respectfully.
 * Provides a fully featured interface with support for fusion and streams
@@ -210,7 +211,7 @@ little. It's major strong points are:
 For larger images `massiv`, `repa` and `accelerate` are not too far from each other with
 respect to performance, so I think it is worth to take a look at runtimes of individual
 steps of the algorithm. This would allow me personally as a maintainer of `massiv` to see
-where can I focus my attention in order to improve the library in the future.
+where I can focus my attention in order to improve the library in the future.
 <!--
 stack bench :bench-canny-steps --ba '--output canny-steps.html --template /home/lehins/github/haskell-benchmarks/template.tpl' && mv canny-steps.html ../../lehins.github.io/assets/iframes/2020-07-10-canny-benchmarks/canny-steps.html
 -->
@@ -221,10 +222,10 @@ Now let's look at a high level overview of individual steps of the algorithm and
 performance analysis.
 
 
-#### Convert to Grayscale
+#### Grayscale
 
 Edge detection can't happen directly on the color image, so the first natural step is to
-convert an sRGB encoded image into grayscale as luma (non-linear brightness of an
+convert an sRGB encoded image into grayscale as luma (i.e. non-linear brightness of an
 image). All of the libraries mistakenly call it luminance, but that is besides the
 point. What matters is that the conversion happens in the exact same manner: `y = r *
 0.299 + g * 0.587 + b * 0.114`. There are also arguments against using luma for some of
