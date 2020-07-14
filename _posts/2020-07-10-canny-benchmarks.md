@@ -197,7 +197,12 @@ little. Its major strong points are:
 * When used correctly it will result in extremely efficient code. The API makes it harder
   for it to be used incorrectly through the power of Haskell's type system.
 * Sophisticated and parallelizable stencil computation that works equally well for all
-  dimensions, unlike `repa` or `accelerate` with two and three dimensions respectfully.
+  dimensions and sizes, unlike <strike> <code class="highlighter-rouge">repa</code> or
+  <code class="highlighter-rouge">accelerate</code> with two and three dimensions
+  respectfully</strike> `repa` that can only handle 2-dimensional convolution or
+  `accelerate` that works with an arbitrary dimension, but is restricted to stencils with
+  symmetric sizes that have fixed center in the middle. ([Fixed thanks to feedback from
+  Trevor](https://www.reddit.com/r/haskell/comments/hpcv68/performance_of_haskell_array_libraries_through/fy1d1wb/))
 * Provides a fully featured interface with support for fusion and streams
 * It is the only multi-dimensional array library with above properties that also has a
   full blown mutable interface
