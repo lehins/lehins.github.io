@@ -7,10 +7,16 @@ tags: [haskell, rng, benchmarks]
 
 # Random libraries and benchmarks
 
+
 Benchmarks of random libraries, or how fast can we generate random numbers in Haskell. In
 this post I will share with you my investigation into performance of libraries that can be
 used for random number generation. Besides performance, I will provide a brief introduction
 on how to use those libraries and what are their conceptual differences.
+
+__**Edit**__ With the release of
+[`random-1.2.0`](https://hackage.haskell.org/package/random-1.2.0) version on 2020-06-23
+performance issues described here about `random` package are no longer applicable, in part
+thanks to this blogpost.
 
 ## Categories of randomness
 
