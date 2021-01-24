@@ -2,7 +2,7 @@
 layout: page
 title: Random Benchmarks
 categories: [blog, dev]
-tags: [haskell, rng, benchmarks]
+tags: [haskell, prng, benchmarks]
 ---
 
 # Random libraries and benchmarks

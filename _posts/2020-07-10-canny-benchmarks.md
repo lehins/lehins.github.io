@@ -2,7 +2,7 @@
 layout: page
 title: Performance of Haskell Array libraries through Canny edge detection
 categories: [blog, dev]
-tags: [haskell, rng, benchmarks]
+tags: [haskell, arrays, massiv, benchmarks]
 ---
 
 # Performance of Haskell Array libraries through Canny edge detection
