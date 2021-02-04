@@ -48,13 +48,13 @@ improvements and the new monadic stateful interface.
   >  * Add an interface to random package for stateful generators, which could be used by
   >    mwc-random and others alike.
 
-* February 2020 - Dominic Stenitz confirmed my benchmark results from the blogpost and
+* February 2020 - Dominic Steinitz confirmed my benchmark results from the blogpost and
   ["called out my
   bluff"](https://github.com/lehins/haskell-benchmarks/issues/3#issuecomment-584280581)
   about improvements I'd make if "it were up to me". To be more precise he asked me if I'd be
   willing to collaborate on getting those issues with `random` resolved.
 
-* February 2020 - June 2020: Dominic Stenitz, Leonhard Markert and myself worked really
+* February 2020 - June 2020: Dominic Steinitz, Leonhard Markert and myself worked really
   hard on implementing proposed solutions as well as solving any other important issues we
   could find.
 
@@ -692,7 +692,7 @@ After 5 months of work:
 
 ## Special thanks to
 
-* Dominic Stenitz [@idontgetoutmuch](https://github.com/idontgetoutmuch)
+* Dominic Steinitz [@idontgetoutmuch](https://github.com/idontgetoutmuch)
 * Leonhard Markert [@curiousleo](https://github.com/curiousleo)
 * Aleksey Khudyakov [@Shimuuar](https://github.com/Shimuuar)
 * Andrew Lelechenko [@bodigrim](https://github.com/bodigrim)
